@@ -1,3 +1,32 @@
+CREATE TABLE clientes (
+    identificacion VARCHAR(30) PRIMARY KEY,
+    nombre VARCHAR(20) NOT NULL,
+    edad INT NOT NULL,
+    correo VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE productos (
+    codigo VARCHAR(30) PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    stock INT,
+    valor_unitario FLOAT
+);
+
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    valor_total FLOAT,
+    cantidad INT,
+    fecha DATE NOT NULL,
+    producto_id VARCHAR(30) NOT NULL,
+    cliente_id VARCHAR(30) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(identificacion) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES productos(codigo) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+);
+
 BEGIN;
 
 --Creacion de clientes
