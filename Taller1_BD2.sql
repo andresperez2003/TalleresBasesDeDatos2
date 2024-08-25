@@ -19,12 +19,8 @@ CREATE TABLE pedidos (
     fecha DATE NOT NULL,
     producto_id VARCHAR(30) NOT NULL,
     cliente_id VARCHAR(30) NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES clientes(identificacion) 
-        ON DELETE CASCADE 
-        ON UPDATE CASCADE,
-    FOREIGN KEY (producto_id) REFERENCES productos(codigo) 
-        ON DELETE CASCADE 
-        ON UPDATE CASCADE
+    FOREIGN KEY (cliente_id) REFERENCES clientes(identificacion) on delete cascade on update cascade,
+    FOREIGN KEY (producto_id) REFERENCES productos(codigo) on delete cascade on update cascade
 );
 
 BEGIN;
