@@ -69,29 +69,30 @@ call obtener_total_stock();
 
 --PARTE 2
 
-create or replace procedure generar_auditoria(
-    P_fecha_inicio date,
-    p_fecha_final date
+CREATE OR REPLACE PROCEDURE generar_auditoria(
+    P_fecha_inicio DATE,
+    p_fecha_final DATE
 )
-language plpgsql
-as $$
-declare 
-    v_id_factura varchar;  -- Cambiado a varchar
+LANGUAGE plpgsql
+AS $$
+DECLARE 
+    v_id_factura INTEGER;  -- Cambiado a integer
     v_estado_factura taller5.estado;
-    v_fecha date;
-begin
-    for v_fecha, v_id_factura, v_estado_factura in
-        select fecha, id, pedido_estado
-        from taller5.facturas
-        where fecha between P_fecha_inicio and p_fecha_final  -- Filtrar directamente en la consulta
-    loop
-        insert into taller5.auditoria(fecha_inicio, fecha_final, factura_id, pedido_estado)
-        values (P_fecha_inicio, p_fecha_final, v_id_factura, v_estado_factura);
+    v_fecha DATE;
+BEGIN
+    FOR v_fecha, v_id_factura, v_estado_factura IN
+        SELECT fecha, id, pedido_estado
+        FROM taller5.facturas
+        WHERE fecha BETWEEN P_fecha_inicio AND p_fecha_final  -- Filtrar directamente en la consulta
+    LOOP
+        INSERT INTO taller5.auditoria(fecha_inicio, fecha_final, factura_id, pedido_estado)
+        VALUES (P_fecha_inicio, p_fecha_final, v_id_factura, v_estado_factura);
         
-        raise notice 'Se ha creado la auditoría para la factura: %', v_id_factura;
-    end loop;
+        RAISE NOTICE 'Se ha creado la auditoría para la factura: %', v_id_factura;
+    END LOOP;
 END;
 $$;
+
 
 
 call generar_auditoria('2000-11-12', '2004-11-12');

@@ -1,60 +1,58 @@
-create table empleados (
-	identificacion serial primary key,
-	nombre varchar not null,
-	tipo_contrato int not null,
-	
-	foreign key (tipo_contrato) references tipo_contrato(id)
-)
+CREATE TABLE empleados (
+    identificacion serial PRIMARY KEY,
+    nombre varchar NOT NULL,
+    tipo_contrato int NOT NULL,
+    FOREIGN KEY (tipo_contrato) REFERENCES tipo_contrato(id)
+);
 
-create table tipo_contrato (
-	id serial primary key,
-	descripcion varchar not null,
-	cargo varchar null,
-	salario_total numeric not null
-)
+CREATE TABLE tipo_contrato (
+    id serial PRIMARY KEY,
+    descripcion varchar NOT NULL,
+    cargo varchar NULL,
+    salario_total numeric NOT NULL
+);
 
-create table conceptos(
-	codigo serial primary key,
-	nombre varchar check (nombre in ('salario','horas_extras','prestaciones','impuestos')),
-	porcentaje numeric
-)
+CREATE TABLE conceptos (
+    codigo serial PRIMARY KEY,
+    nombre varchar CHECK (nombre IN ('salario','horas_extras','prestaciones','impuestos')),
+    porcentaje numeric
+);
 
-create table nomina(
-	id serial primary key,
-	mes varchar check (mes in ('01','02','03','04','05','06','07','08','09','10','11','12')),
-	año varchar,
-	fecha_pago date,
-	total_devengado numeric,
-	total_deducciones numeric,
-	total numeric,
-	cliente_id int,
-	foreign key (cliente_id) references empleados(identificacion)
-)
+CREATE TABLE nomina (
+    id serial PRIMARY KEY,
+    mes varchar CHECK (mes IN ('01','02','03','04','05','06','07','08','09','10','11','12')),
+    año varchar,
+    fecha_pago date,
+    total_devengado numeric,
+    total_deducciones numeric,
+    total numeric,
+    cliente_id int,
+    FOREIGN KEY (cliente_id) REFERENCES empleados(identificacion)
+);
 
-
-create table detalles_nomina(
-	id serial primary key,
-	valor numeric,
-	concepto_id int,
-	nomina_id int,
-	foreign key (concepto_id) references conceptos(codigo),
-	foreign key (nomina_id) references nomina(id)
-)
+CREATE TABLE detalles_nomina (
+    id serial PRIMARY KEY,
+    valor numeric,
+    concepto_id int,
+    nomina_id int,
+    FOREIGN KEY (concepto_id) REFERENCES conceptos(codigo),
+    FOREIGN KEY (nomina_id) REFERENCES nomina(id)
+);
 
 CREATE OR REPLACE PROCEDURE insertar_tipo_contratos()
 LANGUAGE plpgsql
 AS $$
 BEGIN
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('1', 'Indefinido', 'Gerente', 5000.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('2', 'Temporal', 'Asistente', 1500.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('3', 'Por obra', 'Supervisor', 2000.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('4', 'Indefinido', 'Jefe de proyecto', 4500.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('5', 'Temporal', 'Analista', 2200.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('6', 'Por obra', 'Desarrollador', 3000.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('7', 'Indefinido', 'Consultor', 3500.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('8', 'Temporal', 'Soporte Técnico', 1800.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('9', 'Indefinido', 'Administrador de Redes', 4000.00);
-    INSERT INTO tipo_contrato (id, descripcion, cargo, salario_total) VALUES ('10', 'Por obra', 'Diseñador Gráfico', 2500.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Indefinido', 'Gerente', 5000.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Temporal', 'Asistente', 1500.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Por obra', 'Supervisor', 2000.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Indefinido', 'Jefe de proyecto', 4500.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Temporal', 'Analista', 2200.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Por obra', 'Desarrollador', 3000.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Indefinido', 'Consultor', 3500.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Temporal', 'Soporte Técnico', 1800.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Indefinido', 'Administrador de Redes', 4000.00);
+    INSERT INTO tipo_contrato (descripcion, cargo, salario_total) VALUES ('Por obra', 'Diseñador Gráfico', 2500.00);
 END;
 $$;
 
@@ -97,11 +95,11 @@ BEGIN
 END;
 $$;
 
+
 CREATE OR REPLACE PROCEDURE insertar_detalles_nomina()
 LANGUAGE plpgsql
 AS $$
 BEGIN
-
     INSERT INTO detalles_nomina (valor, concepto_id, nomina_id) VALUES (500.00, 1, 1);
     INSERT INTO detalles_nomina (valor, concepto_id, nomina_id) VALUES (2500.00, 2, 1);
     INSERT INTO detalles_nomina (valor, concepto_id, nomina_id) VALUES (600.00, 3, 2);
@@ -138,10 +136,11 @@ BEGIN
     INSERT INTO conceptos (nombre, porcentaje) VALUES ('impuestos', 11.25);
     INSERT INTO conceptos (nombre, porcentaje) VALUES ('salario', 100.00);
     INSERT INTO conceptos (nombre, porcentaje) VALUES ('horas_extras', 14.00);
-    INSERT INTO conceptos (nombre, porcentaje) VALUES ('prestaciones', 8.25);
-    INSERT INTO conceptos (nombre, porcentaje) VALUES ('impuestos', 10.50);
+    INSERT INTO conceptos (nombre, porcentaje) VALUES ('prestaciones', 10.00);
+    INSERT INTO conceptos (nombre, porcentaje) VALUES ('impuestos', 12.50);
 END;
 $$;
+
 
 CREATE OR REPLACE FUNCTION obtener_nomina_empleado(emp_identificacion int, nomina_mes varchar, nomina_año varchar)
 RETURNS TABLE (
@@ -154,10 +153,13 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
     RETURN QUERY
-    SELECT e.nombre, n.total_devengado, n.total_deducciones, n.total FROM empleados e JOIN nomina n ON e.identificacion = n.cliente_id
+    SELECT e.nombre, n.total_devengado, n.total_deducciones, n.total 
+    FROM empleados e 
+    JOIN nomina n ON e.identificacion = n.cliente_id
     WHERE e.identificacion = emp_identificacion AND n.mes = nomina_mes AND n.año = nomina_año;
 END;
 $$;
+
 
 CREATE OR REPLACE FUNCTION total_por_contrato(
     tipo_contrato_param int
@@ -175,18 +177,27 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
     RETURN QUERY
-    SELECT e.nombre, n.fecha_pago, n.año, n.mes, n.total_devengado, n.total_deducciones, n.total FROM empleados e JOIN nomina n ON e.identificacion = n.cliente_id WHERE  e.tipo_contrato = tipo_contrato_param;
+    SELECT e.nombre, n.fecha_pago, n.año, n.mes, n.total_devengado, n.total_deducciones, n.total 
+    FROM empleados e 
+    JOIN nomina n ON e.identificacion = n.cliente_id 
+    WHERE e.tipo_contrato = tipo_contrato_param;
 END;
 $$;
 
 
+-- Ejecutar los procedimientos de inserción
+
+CALL insertar_tipo_contratos();
+CALL insertar_conceptos();
+CALL insertar_empleados();
+CALL insertar_nominas();
+CALL insertar_detalles_nomina();
 
 
-call insertar_tipo_contratos();
-call insertar_empleados();
-call insertar_nominas();
-call insertar_detalles_nomina();
-call insertar_conceptos();
 
-select * from obtener_nomina_empleado(1, '01', '2024');
-select * from total_por_contrato(1);
+-- Obtener nómina de un empleado específico
+SELECT * FROM obtener_nomina_empleado(1, '01', '2024');
+
+-- Obtener total por tipo de contrato
+SELECT * FROM total_por_contrato(1);
+
