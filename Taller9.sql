@@ -154,8 +154,8 @@ AS $$
 BEGIN
     RETURN QUERY
     SELECT e.nombre, n.total_devengado, n.total_deducciones, n.total 
-    FROM empleados e 
-    JOIN nomina n ON e.identificacion = n.cliente_id
+    FROM taller9.empleados e 
+    JOIN taller9.nomina n ON e.identificacion = n.cliente_id
     WHERE e.identificacion = emp_identificacion AND n.mes = nomina_mes AND n.año = nomina_año;
 END;
 $$;
@@ -178,8 +178,8 @@ AS $$
 BEGIN
     RETURN QUERY
     SELECT e.nombre, n.fecha_pago, n.año, n.mes, n.total_devengado, n.total_deducciones, n.total 
-    FROM empleados e 
-    JOIN nomina n ON e.identificacion = n.cliente_id 
+    FROM taller9.empleados e 
+    JOIN taller9.nomina n ON e.identificacion = n.cliente_id 
     WHERE e.tipo_contrato = tipo_contrato_param;
 END;
 $$;
@@ -201,3 +201,4 @@ SELECT * FROM obtener_nomina_empleado(1, '01', '2024');
 -- Obtener total por tipo de contrato
 SELECT * FROM total_por_contrato(1);
 
+select * from nomina;
