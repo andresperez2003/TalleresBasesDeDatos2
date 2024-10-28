@@ -1,0 +1,63 @@
+[
+    { "ISBN": 1, "Titulo": "Sombras de la Eternidad", "NombreAutor": "Ana Martínez", "Genero": "Amor", "Año": 2003 },
+    { "ISBN": 2, "Titulo": "La Torre de Cristal", "NombreAutor": "Carlos Jiménez", "Genero": "Ciencia Ficción Distópica", "Año": 2015 },
+    { "ISBN": 3, "Titulo": "Ecos del Pasado", "NombreAutor": "Lucía Herrera", "Genero": "Drama", "Año": 1982 },
+    { "ISBN": 4, "Titulo": "El Camino Invisible", "NombreAutor": "Diego Rodríguez", "Genero": "Filosofía", "Año": 1998 },
+    { "ISBN": 5, "Titulo": "Memorias de un Viajero", "NombreAutor": "Pedro López", "Genero": "Clásico", "Año": 1899 },
+    { "ISBN": 6, "Titulo": "La Flor de Acero", "NombreAutor": "María Gómez", "Genero": "Romántico", "Año": 2012 },
+    { "ISBN": 7, "Titulo": "El Reloj de Arena", "NombreAutor": "Federico Sánchez", "Genero": "Suspenso", "Año": 1860 },
+    { "ISBN": 8, "Titulo": "Sombras en el Bosque", "NombreAutor": "Elena Ruiz", "Genero": "Fantasía Épica", "Año": 2009 },
+    { "ISBN": 9, "Titulo": "La Guerra de los Mundos", "NombreAutor": "Hugo León", "Genero": "Ciencia Ficción Distópica", "Año": 2020 },
+    { "ISBN": 10, "Titulo": "Canción de Otoño", "NombreAutor": "Sara Molina", "Genero": "Ficción", "Año": 1995 },
+    { "ISBN": 11, "Titulo": "El Último Susurro", "NombreAutor": "Ricardo Ortega", "Genero": "Suspenso", "Año": 1987 },
+    { "ISBN": 12, "Titulo": "Viento en las Montañas", "NombreAutor": "Isabel Castro", "Genero": "Fábula", "Año": 1964 },
+    { "ISBN": 13, "Titulo": "Ojos de Cristal", "NombreAutor": "Esteban Martínez", "Genero": "Experimental", "Año": 2001 },
+    { "ISBN": 14, "Titulo": "Almas Perdidas", "NombreAutor": "Sofía Vega", "Genero": "Existencialismo", "Año": 1999 },
+    { "ISBN": 15, "Titulo": "Los Secretos del Tiempo", "NombreAutor": "Alejandro Torres", "Genero": "Épico", "Año": 2023 },
+    { "ISBN": 16, "Titulo": "El Mar Infinito", "NombreAutor": "Marta López", "Genero": "Épico", "Año": 2023 },
+    { "ISBN": 17, "Titulo": "El Despertar de las Sombras", "NombreAutor": "Luis Ramírez", "Genero": "Fantasía Épica", "Año": 1990 },
+    { "ISBN": 18, "Titulo": "El Guardián del Silencio", "NombreAutor": "Valeria Morales", "Genero": "Fantasía", "Año": 2011 },
+    { "ISBN": 19, "Titulo": "El Fin del Amanecer", "NombreAutor": "Laura Fernández", "Genero": "Ciencia Ficción Distópica", "Año": 2021 },
+    { "ISBN": 20, "Titulo": "Luz en la Oscuridad", "NombreAutor": "Emilio Rojas", "Genero": "Drama", "Año": 1950 }
+]
+
+
+  {
+    "filter": { "Genero": "Amor" },
+    "update": { "$set": { "Genero": "Amor y fantasia" } }
+  }
+  {
+    "filter": { "Titulo": "Sombras en el Bosque" },
+    "update": { "$set": { "Año": 1945 } }
+  }
+  {
+    "filter": { "Titulo": "Canción de Otoño" },
+    "update": { "$set": { "NombreAutor": "Francis Scott Fitzgerald" } }
+  }
+  {
+    "filter": { "Genero": "Suspenso" },
+    "update": { "$set": { "Genero": "Suspenso y terror" } }g
+  }s
+  {
+    "Año": { "$gt": 1950 } 
+  }
+  {
+     "Año": { "$lt": 1900 } 
+  }
+  {
+    "Genero": { "$in": ["Fantasía Épica", "Ciencia Ficción Distópica"] } 
+  }
+  {
+     "Año": { "$gte": 1800, "$lte": 1950 } 
+  }
+  {
+    "NombreAutor": "Federico Sánchez" 
+  }
+  {
+     "Genero": "Fantasía Épica", "Año": { "$gt": 2009 }
+  }
+  {
+    "Genero": { "$ne": "Suspenso y terror" } 
+  }
+
+
