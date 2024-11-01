@@ -1,0 +1,126 @@
+db.productos.insertMany([
+  {
+    productId: 1,
+    nombre: "camiseta",
+    descripcion: "Camiseta de algodón",
+    precio: 20,
+    categoria: { categoriaId: 1, nombreCategoria: "Ropa" },
+    comentarios: [
+      { comentarioId: 1, texto: "Muy cómoda", cliente: "Juan" },
+      { comentarioId: 2, texto: "Buena calidad", cliente: "María" }
+    ]
+  },  
+  {
+    productId: 2,
+    nombre: "pantalón",
+    descripcion: "Pantalón de mezclilla",
+    precio: 35,
+    categoria: { categoriaId: 1, nombreCategoria: "Ropa" },
+    comentarios: [
+      { comentarioId: 3, texto: "Excelente ajuste", cliente: "Carlos" },
+      { comentarioId: 4, texto: "Un poco caro", cliente: "Lucía" }
+    ]
+  },
+  {
+    productId: 3,
+    nombre: "tenis",
+    descripcion: "Tenis deportivos",
+    precio: 50,
+    categoria: { categoriaId: 2, nombreCategoria: "Calzado" },
+    comentarios: [
+      { comentarioId: 5, texto: "Muy cómodos para correr", cliente: "Ana" },
+      { comentarioId: 6, texto: "Buena relación calidad-precio", cliente: "Pedro" }
+    ]
+  },
+  {
+    productId: 4,
+    nombre: "gorra",
+    descripcion: "Gorra unisex",
+    precio: 15,
+    categoria: { categoriaId: 1, nombreCategoria: "Ropa" },
+    comentarios: [
+      { comentarioId: 7, texto: "Me encantó el diseño", cliente: "Laura" }
+    ]
+  },
+  {
+    productId: 5,
+    nombre: "mochila",
+    descripcion: "Mochila escolar",
+    precio: 25,
+    categoria: { categoriaId: 3, nombreCategoria: "Accesorios" },
+    comentarios: [
+      { comentarioId: 8, texto: "Muy espaciosa", cliente: "Jorge" },
+      { comentarioId: 9, texto: "Perfecta para la universidad", cliente: "Sofía" }
+    ]
+  },
+  {
+    productId: 6,
+    nombre: "reloj",
+    descripcion: "Reloj digital",
+    precio: 45,
+    categoria: { categoriaId: 3, nombreCategoria: "Accesorios" },
+    comentarios: [
+      { comentarioId: 10, texto: "Muy elegante", cliente: "Marcos" }
+    ]
+  },
+  {
+    productId: 7,
+    nombre: "chaqueta",
+    descripcion: "Chaqueta de cuero",
+    precio: 100,
+    categoria: { categoriaId: 1, nombreCategoria: "Ropa" },
+    comentarios: [
+      { comentarioId: 11, texto: "Buena calidad y duradera", cliente: "Luis" },
+      { comentarioId: 12, texto: "Se siente muy cómoda", cliente: "Marta" }
+    ]
+  },
+  {
+    productId: 8,
+    nombre: "sandalias",
+    descripcion: "Sandalias para playa",
+    precio: 20,
+    categoria: { categoriaId: 2, nombreCategoria: "Calzado" },
+    comentarios: [
+      { comentarioId: 13, texto: "Ideales para verano", cliente: "Andrea" }
+    ]
+  },
+  {
+    productId: 9,
+    nombre: "lentes de sol",
+    descripcion: "Lentes de sol polarizados",
+    precio: 30,
+    categoria: { categoriaId: 3, nombreCategoria: "Accesorios" },
+    comentarios: [
+      { comentarioId: 14, texto: "Protegen muy bien", cliente: "Ricardo" }
+    ]
+  },
+  {
+    productId: 10,
+    nombre: "camisa",
+    descripcion: "Camisa formal",
+    precio: 40,
+    categoria: { categoriaId: 1, nombreCategoria: "Ropa" },
+    comentarios: [
+      { comentarioId: 15, texto: "Perfecta para ocasiones especiales", cliente: "Gloria" }
+    ]
+  }
+])
+
+
+
+db.productos.find(
+  {},
+  { categoria: 0, comentarios: 0 }
+)
+
+
+db.productos.find(
+  {},
+  { comentarios: 0 }
+)
+
+db.productos.find(
+  {},
+  { categoria: 0 }
+)
+
