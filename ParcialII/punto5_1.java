@@ -21,10 +21,10 @@ public class Main {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "andres2003");
 
-            // Llamada a obtener_pagos_usuario
+     
             PreparedStatement stmtPagos = conexion.prepareStatement("SELECT * FROM obtener_pagos_usuario(?, ?)");
-            stmtPagos.setInt(1, 1);  // Reemplaza 1 con el usuario_id que desees
-            stmtPagos.setDate(2, java.sql.Date.valueOf("2024-10-30"));  // Fecha en formato yyyy-MM-dd
+            stmtPagos.setInt(1, 1);  
+            stmtPagos.setDate(2, java.sql.Date.valueOf("2024-10-30"));  
 
             ResultSet rsPagos = stmtPagos.executeQuery();
             System.out.println("Pagos del usuario:");
@@ -39,9 +39,9 @@ public class Main {
             rsPagos.close();
             stmtPagos.close();
 
-            // Llamada a obtener_tarjetas_usuario
+         
             PreparedStatement stmtTarjetas = conexion.prepareStatement("SELECT * FROM obtener_tarjetas_usuario(?)");
-            stmtTarjetas.setInt(1, 1);  // Reemplaza 1 con el usuario_id que desees
+            stmtTarjetas.setInt(1, 1);  
 
             ResultSet rsTarjetas = stmtTarjetas.executeQuery();
             System.out.println("\nTarjetas del usuario:");
@@ -59,7 +59,7 @@ public class Main {
             rsTarjetas.close();
             stmtTarjetas.close();
 
-            // Cerrar la conexión
+          
             conexion.close();
         } catch (Exception e) {
             e.printStackTrace();
