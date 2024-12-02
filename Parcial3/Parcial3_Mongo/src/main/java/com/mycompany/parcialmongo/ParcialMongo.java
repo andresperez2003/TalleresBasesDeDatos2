@@ -239,7 +239,7 @@ public class ParcialMongo {
         Document cliente = crearCliente(nombreCliente, correoCliente, telefonoCliente, direccionCliente);
         Document habitacion = crearHabitacion(tipoHabitacion, numeroHabitacion, precioNoche, capacidad, descripcionHabitacion);
 
-        // Crear el documento de reserva
+        //Crear reserva                                
         Document reserva = new Document("_id", id)
                 .append("cliente", cliente)
                 .append("habitacion", habitacion)
