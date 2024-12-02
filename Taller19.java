@@ -1,5 +1,406 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * 
+    Datos del mongDB
+ [{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c2e"
+  },
+  "ProductoID": 1,
+  "Nombre": "Camiseta",
+  "Descripcion": "Camiseta de algodón actualizada",
+  "Precio": 5000,
+  "Categoria": {
+    "CategeoriaID": 1,
+    "NombreCategoria": "Ropa"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 1,
+      "Texto": "Muy cómoda",
+      "Cliente": "Juan"
+    },
+    {
+      "ComentarioID": 2,
+      "Texto": "Buena calidad",
+      "Cliente": "María"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c2f"
+  },
+  "ProductoID": 2,
+  "Nombre": "Audífonos",
+  "Descripcion": "Audífonos inalámbricos con cancelación de ruido",
+  "Precio": 1500,
+  "Categoria": {
+    "CategeoriaID": 2,
+    "NombreCategoria": "Electrónica"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 3,
+      "Texto": "Muy útil",
+      "Cliente": "Pedro"
+    },
+    {
+      "ComentarioID": 4,
+      "Texto": "Excelente calidad",
+      "Cliente": "Sofía"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c30"
+  },
+  "ProductoID": 3,
+  "Nombre": "Lámpara",
+  "Descripcion": "Lámpara de escritorio moderna",
+  "Precio": 3500,
+  "Categoria": {
+    "CategeoriaID": 3,
+    "NombreCategoria": "Hogar"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 5,
+      "Texto": "Práctico",
+      "Cliente": "Carlos"
+    },
+    {
+      "ComentarioID": 6,
+      "Texto": "Buen diseño",
+      "Cliente": "Ana"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c31"
+  },
+  "ProductoID": 4,
+  "Nombre": "Zapatillas deportivas",
+  "Descripcion": "Zapatillas deportivas de alta gama",
+  "Precio": 7000,
+  "Categoria": {
+    "CategeoriaID": 4,
+    "NombreCategoria": "Deportes"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 7,
+      "Texto": "Excelente rendimiento",
+      "Cliente": "Luis"
+    },
+    {
+      "ComentarioID": 8,
+      "Texto": "Muy cómodo para correr",
+      "Cliente": "Laura"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c32"
+  },
+  "ProductoID": 5,
+  "Nombre": "Manzanas",
+  "Descripcion": "Manzanas orgánicas frescas",
+  "Precio": 800,
+  "Categoria": {
+    "CategeoriaID": 5,
+    "NombreCategoria": "Alimentos"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 9,
+      "Texto": "Sabor delicioso",
+      "Cliente": "Roberto"
+    },
+    {
+      "ComentarioID": 10,
+      "Texto": "Frescas y ricas",
+      "Cliente": "Sandra"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c35"
+  },
+  "ProductoID": 8,
+  "Nombre": "Router Wi-Fi",
+  "Descripcion": "Router de alta velocidad",
+  "Precio": 100,
+  "Categoria": {
+    "CategeoriaID": 8,
+    "NombreCategoria": "Tecnología"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 15,
+      "Texto": "Muy rápido",
+      "Cliente": "Esteban"
+    },
+    {
+      "ComentarioID": 16,
+      "Texto": "Buena conexión",
+      "Cliente": "Mariana"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c36"
+  },
+  "ProductoID": 9,
+  "Nombre": "Aspiradora",
+  "Descripcion": "Aspiradora sin cables",
+  "Precio": 80,
+  "Categoria": {
+    "CategeoriaID": 9,
+    "NombreCategoria": "Hogar"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 17,
+      "Texto": "Práctico",
+      "Cliente": "José"
+    },
+    {
+      "ComentarioID": 18,
+      "Texto": "Fácil de usar",
+      "Cliente": "Marta"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de0310da8e2209a3e8c37"
+  },
+  "ProductoID": 10,
+  "Nombre": "Pan",
+  "Descripcion": "Pan de trigo",
+  "Precio": 3,
+  "Categoria": {
+    "CategeoriaID": 10,
+    "NombreCategoria": "Alimentos"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 19,
+      "Texto": "Muy sabroso",
+      "Cliente": "Raúl"
+    },
+    {
+      "ComentarioID": 20,
+      "Texto": "De excelente calidad",
+      "Cliente": "Vera"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe244a"
+  },
+  "ProductoID": 1,
+  "Nombre": "Camiseta",
+  "Descripcion": "Camiseta de algodón",
+  "Precio": 20,
+  "Categoria": {
+    "CategeoriaID": 1,
+    "NombreCategoria": "Ropa"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 1,
+      "Texto": "Muy cómoda",
+      "Cliente": "Juan"
+    },
+    {
+      "ComentarioID": 2,
+      "Texto": "Buena calidad",
+      "Cliente": "María"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe244b"
+  },
+  "ProductoID": 2,
+  "Nombre": "Audífonos",
+  "Descripcion": "Audífonos inalámbricos",
+  "Precio": 50,
+  "Categoria": {
+    "CategeoriaID": 2,
+    "NombreCategoria": "Electrónica"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 3,
+      "Texto": "Muy útil",
+      "Cliente": "Pedro"
+    },
+    {
+      "ComentarioID": 4,
+      "Texto": "Excelente calidad",
+      "Cliente": "Sofía"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe244c"
+  },
+  "ProductoID": 3,
+  "Nombre": "Lámpara",
+  "Descripcion": "Lámpara de escritorio",
+  "Precio": 30,
+  "Categoria": {
+    "CategeoriaID": 3,
+    "NombreCategoria": "Hogar"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 5,
+      "Texto": "Práctico",
+      "Cliente": "Carlos"
+    },
+    {
+      "ComentarioID": 6,
+      "Texto": "Buen diseño",
+      "Cliente": "Ana"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe244d"
+  },
+  "ProductoID": 4,
+  "Nombre": "Zapatillas deportivas",
+  "Descripcion": "Zapatillas para correr",
+  "Precio": 60,
+  "Categoria": {
+    "CategeoriaID": 4,
+    "NombreCategoria": "Deportes"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 7,
+      "Texto": "Excelente rendimiento",
+      "Cliente": "Luis"
+    },
+    {
+      "ComentarioID": 8,
+      "Texto": "Muy cómodo para correr",
+      "Cliente": "Laura"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe244e"
+  },
+  "ProductoID": 5,
+  "Nombre": "Manzanas",
+  "Descripcion": "Manzanas orgánicas",
+  "Precio": 5,
+  "Categoria": {
+    "CategeoriaID": 5,
+    "NombreCategoria": "Alimentos"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 9,
+      "Texto": "Sabor delicioso",
+      "Cliente": "Roberto"
+    },
+    {
+      "ComentarioID": 10,
+      "Texto": "Frescas y ricas",
+      "Cliente": "Sandra"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe2451"
+  },
+  "ProductoID": 8,
+  "Nombre": "Router Wi-Fi",
+  "Descripcion": "Router de alta velocidad",
+  "Precio": 100,
+  "Categoria": {
+    "CategeoriaID": 8,
+    "NombreCategoria": "Tecnología"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 15,
+      "Texto": "Muy rápido",
+      "Cliente": "Esteban"
+    },
+    {
+      "ComentarioID": 16,
+      "Texto": "Buena conexión",
+      "Cliente": "Mariana"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe2452"
+  },
+  "ProductoID": 9,
+  "Nombre": "Aspiradora",
+  "Descripcion": "Aspiradora sin cables",
+  "Precio": 80,
+  "Categoria": {
+    "CategeoriaID": 9,
+    "NombreCategoria": "Hogar"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 17,
+      "Texto": "Práctico",
+      "Cliente": "José"
+    },
+    {
+      "ComentarioID": 18,
+      "Texto": "Fácil de usar",
+      "Cliente": "Marta"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "674de082400115060efe2453"
+  },
+  "ProductoID": 10,
+  "Nombre": "Pan",
+  "Descripcion": "Pan de trigo",
+  "Precio": 3,
+  "Categoria": {
+    "CategeoriaID": 10,
+    "NombreCategoria": "Alimentos"
+  },
+  "Comentarios": [
+    {
+      "ComentarioID": 19,
+      "Texto": "Muy sabroso",
+      "Cliente": "Raúl"
+    },
+    {
+      "ComentarioID": 20,
+      "Texto": "De excelente calidad",
+      "Cliente": "Vera"
+    }
+  ]
+}]
  */
 
 package com.mycompany.tallermongo;
